@@ -223,10 +223,10 @@ http://localhost:3000
 
 ## 👨‍💻 Desenvolvido para
 
-- Full-stack developers
+- Desafio DIO
 - Programadores Go/JavaScript
 - Desafio de algoritmo PIN-PAN
-- Tema cyberpunk Neo-Shibuya
+- Full-stack developers
 
 ---
 
