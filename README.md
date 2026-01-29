@@ -1,6 +1,88 @@
-# PIN-PAN Protocol 🧠 - Zero Echo's Algorithm Decoder
+# PIN-PAN Protocol 🧠 | Zero Echo's Algorithm Decoder
 
-Decodifique o Protocolo PIN-PAN nas ruas de Neo-Shibuya. Uma aplicação full-stack que combina Go (backend) com JavaScript (frontend) para revelar padrões matemáticos ocultos.
+[![Go](https://img.shields.io/badge/Go-1.21%2B-00ADD8?style=flat-square&logo=go)](https://golang.org)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-Semantic-E34C26?style=flat-square&logo=html5)](https://html.spec.whatwg.org)
+[![CSS3](https://img.shields.io/badge/CSS3-Responsive-1572B6?style=flat-square&logo=css3)](https://www.w3.org/Style/CSS/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
+
+Decodifique o **Protocolo PIN-PAN** nas ruas de Neo-Shibuya. Uma aplicação full-stack que combina **Go** (backend) com **JavaScript** (frontend) para revelar padrões matemáticos ocultos através de operações de módulo e loops.
+
+---
+
+## 📖 Descrição do Desafio
+
+Nas ruas escuras de **Neo-Shibuya**, onde neon corta a noite e dados fluem como sangue digital, uma hacker lendária conhecida apenas como **"Zero Echo"** domina os algoritmos. Com seus óculos dourados refletindo circuitos infinitos, ela controla o fluxo de informações através de padrões matemáticos ocultos.
+
+Você foi recrutado para **decodificar o Protocolo PIN-PAN**, um algoritmo que revela segredos escondidos nos números através de operações com o operador `%` (módulo) e loops `for`.
+
+### 🎯 Objetivos
+
+1. **Operação 1 - Divisíveis**: Exibir todos os números entre 1 e 100 que são divisíveis por 3
+2. **Operação 2 - Múltiplos (PIN-PAN)**: Para cada número de 1 a 100:
+   - Se múltiplo de 3 → exibir "PIN"
+   - Se múltiplo de 5 → exibir "PAN"
+   - Se múltiplo de ambos → exibir "PINPAN"
+   - Caso contrário → exibir o número original
+
+---
+
+## 🔄 Rotina do Projeto
+
+### Frontend → Backend (Fluxo de Dados)
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ 1. USUÁRIO INTERAGE COM INTERFACE                          │
+│    ├─ Seleciona operação (1 ou 2) no dropdown              │
+│    ├─ Clica botão CALCULAR                                 │
+│    └─ JavaScript dispara evento click                      │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────────┐
+│ 2. CONTAINER.JS PROCESSA REQUISIÇÃO                        │
+│    ├─ Valida seleção de operação                           │
+│    ├─ Cria JSON: { operation: 1 ou 2 }                     │
+│    └─ Envia POST para http://localhost:8080/calculate      │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────────┐
+│ 3. CALCULATOR.GO PROCESSA LÓGICA                           │
+│    ├─ Recebe JSON com número da operação                   │
+│    ├─ Se operação == 1:                                    │
+│    │   └─ Loop for (i=1 até 100): if i%3==0 → inclui      │
+│    ├─ Se operação == 2:                                    │
+│    │   └─ Loop for (i=1 até 100): verifica %3 e %5        │
+│    └─ Retorna JSON com resultado e estatísticas            │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────────┐
+│ 4. CONTAINER.JS RENDERIZA RESULTADO                        │
+│    ├─ Recebe JSON da API                                   │
+│    ├─ Exibe "Saída Esperada" no campo resultado            │
+│    ├─ Monta "Cálculo Detalhado" com passos                │
+│    └─ Anima resultado com scroll suave                     │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+┌────────────────────▼────────────────────────────────────────┐
+│ 5. USUÁRIO VÊ RESULTADO NA TELA                            │
+│    ├─ Resultado exibido com formatação                     │
+│    ├─ Detalhamento do cálculo visível                      │
+│    └─ Pode clicar RETORNAR para nova operação              │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Tecnologias Utilizadas
+
+| Camada | Tecnologia | Função |
+|--------|-----------|--------|
+| **Backend** | Go 1.21+ | API REST, lógica de cálculo, servidor HTTP |
+| **Frontend** | JavaScript ES6+ | Controle de eventos, requisições AJAX, DOM manipulation |
+| **Markup** | HTML5 Semântico | Estrutura da página, acessibilidade |
+| **Styling** | CSS3 | Layout responsivo, animações, tema cyberpunk |
+| **Áudio/Vídeo** | HTML5 Media | Background 4K, tema sonora interativa |
+
+---
 
 ## 📋 Estrutura do Projeto
 
@@ -9,94 +91,72 @@ Decodifique o Protocolo PIN-PAN nas ruas de Neo-Shibuya. Uma aplicação full-st
 ├── container.js           # Frontend JavaScript - Gerenciador de API
 ├── index.html            # HTML Semântico
 ├── styles.css            # CSS Responsivo com Animações
+├── start.sh              # Script para rodar tudo junto
+├── test-api.sh           # Script para testar a API
+├── diagnose.sh           # Script de diagnóstico
 ├── assets/
 │   ├── background.mp4    # Video 4K (3840x2160)
 │   └── theme.mp3         # Música tema
 └── README.md            # Este arquivo
 ```
 
+---
+
 ## 🚀 Como Executar
 
 ### Pré-requisitos
 - Go 1.16+ instalado
+- Python 3 instalado
 - Navegador moderno (Chrome, Firefox, Safari, Edge)
-- Video background.mp4 e áudio theme.mp3 na pasta `assets/`
+- Arquivos: `background.mp4` e `theme.mp3` em `assets/` (opcional)
 
-### 1️⃣ Clonar/Baixar os Arquivos
-
-Organize os arquivos na seguinte estrutura:
-
-```
-seu-projeto/
-├── calculator.go
-├── container.js
-├── index.html
-├── styles.css
-└── assets/
-    ├── background.mp4
-    └── theme.mp3
-```
-
-### 2️⃣ Compilar e Executar o Backend (Go)
+### 🌟 Forma Mais Fácil (Recomendado)
 
 ```bash
-# Navegar até o diretório do projeto
 cd seu-projeto
+chmod +x start.sh
+./start.sh
+```
 
-# Compilar o Go
-go build -o pin-pan-server calculator.go
+Isso roda **tudo automaticamente** em um só comando! 🚀
 
-# Executar o servidor
-./pin-pan-server
+### Alternativa: 3 Terminais Separados
 
-# Ou executar direto:
+**Terminal 1 - Backend:**
+```bash
+cd seu-projeto
 go run calculator.go
 ```
 
-Você verá:
-```
-🔒 PIN-PAN Protocol iniciado em http://localhost:8080
-📡 Aguardando conexões...
-```
-
-### 3️⃣ Servir o Frontend
-
-Abra um segundo terminal:
-
+**Terminal 2 - Frontend:**
 ```bash
-# Usando Python 3 (mais simples)
-python -m http.server 3000
-
-# Ou usando Python 2
-python -m SimpleHTTPServer 3000
-
-# Ou usando Node.js (http-server)
-npx http-server -p 3000
-
-# Ou usando PHP
-php -S localhost:3000
+cd seu-projeto
+python3 -m http.server 3000
 ```
 
-### 4️⃣ Acessar no Navegador
+**Terminal 3 - Testar (Opcional):**
+```bash
+cd seu-projeto
+chmod +x test-api.sh
+./test-api.sh
+```
 
-Abra seu navegador e acesse:
+### Acessar no Navegador
 ```
 http://localhost:3000
 ```
 
+---
+
 ## 🎮 Como Usar
 
-1. **Selecione uma operação** no dropdown:
-   - `1 - Divisíveis por 3`: Exibe números divisíveis por 3 entre 1-100
-   - `2 - Múltiplos (PIN-PAN)`: Exibe padrão PIN-PAN
-
+1. **Selecione uma operação** no dropdown
 2. **Clique em CALCULAR** para processar
-
 3. **Visualize o resultado** com cálculo detalhado
+4. **Clique em RETORNAR** para nova operação
+5. **Controle a música** com o botão 🎵
 
-4. **Clique em RETORNAR** para limpar e começar novamente
-
-5. **Controle a música** com o botão 🎵 no canto superior direito
+---
 
 ## 🔧 Arquitetura
 
@@ -117,13 +177,15 @@ http://localhost:3000
 - Tema cyberpunk (amarelo/preto)
 - Accessibility completa
 
+---
+
 ## 📱 Responsividade
 
 - ✅ Desktop (1920px+)
 - ✅ Tablets (768px - 1024px)
 - ✅ Mobile (320px - 480px)
 
-Botões se reorganizam em coluna em telas menores.
+---
 
 ## 🎨 Paleta de Cores
 
@@ -132,42 +194,7 @@ Botões se reorganizam em coluna em telas menores.
 - **Cinza**: `#78909C` (secundário)
 - **Gradientes**: Preto + Ouro + Laranja
 
-## 🔐 Funcionalidades PIN-PAN
-
-### Operação 1: Divisíveis por 3
-```
-Lógica: if (n % 3 == 0) → incluir
-Resultado: 3 6 9 12 15 18 ... 99
-```
-
-### Operação 2: Múltiplos (PIN-PAN)
-```
-Lógica:
-- n % 3 == 0 && n % 5 == 0 → PINPAN
-- n % 3 == 0 → PIN
-- n % 5 == 0 → PAN
-- else → número
-```
-
-## 🛠️ Troubleshooting
-
-### Erro: "Não consegue conectar com a API"
-- Certifique-se de que o servidor Go está rodando (`go run calculator.go`)
-- Verifique se está usando `http://localhost:8080`
-- Checa se o CORS está habilitado
-
-### Vídeo não carrega
-- Adicione o arquivo `background.mp4` em `assets/`
-- Verifique o caminho no HTML
-
-### Áudio não funciona
-- Adicione o arquivo `theme.mp3` em `assets/`
-- Alguns navegadores bloqueiam autoplay (click no botão manualmente)
-
-### Responsividade quebrada
-- Limpe cache do navegador (Ctrl+Shift+Delete)
-- Teste em modo incógnito
-- Verifique viewport no HTML
+---
 
 ## 📚 Dependências
 
@@ -182,20 +209,17 @@ Lógica:
 - JavaScript ES6+
 - Nenhuma biblioteca externa requerida
 
+---
+
 ## 🎯 Performance
 
 - Backend: ~1ms por requisição
 - Frontend: Resposta imediata
 - Video: Otimizado para 4K
-- Arquivo CSS: ~15KB (minificado)
-- Arquivo JS: ~5KB (minificado)
+- Arquivo CSS: ~15KB
+- Arquivo JS: ~7KB
 
-## 📝 Notas Importantes
-
-1. **CORS**: Frontend e Backend devem estar em portas diferentes ou CORS deve ser configurado
-2. **Segurança**: Para produção, adicione autenticação e validação robusta
-3. **Escalabilidade**: Para muitos usuários, considere usar database
-4. **Mobile**: Testar em dispositivos reais, não apenas DevTools
+---
 
 ## 👨‍💻 Desenvolvido para
 
@@ -203,13 +227,6 @@ Lógica:
 - Programadores Go/JavaScript
 - Desafio de algoritmo PIN-PAN
 - Tema cyberpunk Neo-Shibuya
-
-## 📞 Suporte
-
-Se encontrar problemas:
-1. Verifique se ambos servidores (Go + HTTP) estão rodando
-2. Confirme os caminhos dos assets (video e áudio)
-3. Teste a API direto: `curl -X POST http://localhost:8080/calculate -H "Content-Type: application/json" -d '{"operation": 1}'`
 
 ---
 
