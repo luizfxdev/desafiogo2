@@ -1,4 +1,4 @@
-https://github.com/luizfxdev/desafiogo2/blob/main/README.md# PIN-PAN Protocol 🧠 | Zero Echo's Algorithm Decoder
+# PIN-PAN Protocol 🧠 | Zero Echo's Algorithm Decoder
 
 [![Go](https://img.shields.io/badge/Go-1.21%2B-00ADD8?style=flat-square&logo=go)](https://golang.org)
 [![JavaScript](https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?style=flat-square&logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -248,7 +248,7 @@ Desenvolvedor Full Stack apaixonado por criar soluções elegantes e eficientes.
 
 **Desenvolvido com 💙 usando Go, JavaScript e muita criatividade**
 
-[⬆ Voltar ao topo](#-calculadora-de-temperatura)
+
 
 </div>
 
