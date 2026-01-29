@@ -1,4 +1,4 @@
-# PIN-PAN Protocol 🧠 | Zero Echo's Algorithm Decoder
+# PIN-PAN Protocol 🧠 - Zero Echo's Algorithm Decoder
 
 Decodifique o Protocolo PIN-PAN nas ruas de Neo-Shibuya. Uma aplicação full-stack que combina Go (backend) com JavaScript (frontend) para revelar padrões matemáticos ocultos.
 
