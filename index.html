@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PIN-PAN Protocol | Zero Echo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-wrapper">
+        <video id="bgVideo" class="bg-video" autoplay loop playsinline onerror="console.warn('Vídeo não carregou. Verifique assets/background.mp4')">
+            <source src="assets/background.mp4" type="video/mp4">
+        </video>
+        
+        <div class="gradient-overlay"></div>
+    </div>
+
+    <button id="audioToggle" class="audio-btn" aria-label="Alternar som">
+        <span class="audio-icon">🎵</span>
+    </button>
+    <audio id="themeAudio" loop onerror="console.warn('Áudio não carregou. Verifique assets/theme.mp3')">
+        <source src="assets/theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+        <div class="container-header">
+            <h1 class="protocol-title">PIN-PAN Protocol 🧠</h1>
+            <p class="protocol-subtitle">Decodifique o algoritmo oculto nas ruas de Neo-Shibuya</p>
+        </div>
+
+        <div class="description">
+            <p>
+                Você foi recrutado para decodificar o <strong>Protocolo PIN-PAN</strong>, um algoritmo matemático que revela 
+                padrões ocultos através de operações de módulo e loops. Escolha uma operação e deixe que a Zero Echo 
+                decodifique o segredo dos números.
+            </p>
+        </div>
+
+        <div class="input-section">
+            <label for="operationSelect" class="input-label">Selecione a Operação:</label>
+            <select id="operationSelect" class="operation-select" tabindex="1">
+                <option value="" disabled selected>-- Escolha uma operação --</option>
+                <option value="1">1 - Divisíveis por 3</option>
+                <option value="2">2 - Múltiplos (PIN-PAN)</option>
+            </select>
+        </div>
+
+        <div class="button-section">
+            <button id="calculateBtn" class="btn-primary" tabindex="2">
+                <span class="btn-content">CALCULAR</span>
+            </button>
+            <button id="resetBtn" class="btn-secondary" tabindex="3">
+                <span class="btn-content">RETORNAR</span>
+            </button>
+        </div>
+
+        <div class="result-section" id="resultSection" style="display: none;">
+            <div class="result-header">
+                <h2>Resultado Decodificado</h2>
+            </div>
+
+            <div class="result-output">
+                <h3>Saída Esperada</h3>
+                <div id="outputResult" class="output-text"></div>
+            </div>
+
+            <div class="calculation-details">
+                <h3>Cálculo Detalhado</h3>
+                <div id="detailedCalculation" class="details-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="container.js"></script>
+</body>
+</html>
